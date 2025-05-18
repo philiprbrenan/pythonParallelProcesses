@@ -16,7 +16,7 @@ if __name__ == "__main__":                                                      
 
   for i in range(N):                                                            # Start each job
     print(f"Start {i+1:5d} {len(S):5d}")                                        # Jobs started and number of processes running
-    if len(S) >= P: wait_and_remove_first_completed(S)                          # Wait for a process to complete if the working set is full bw=efore starting the next job
+    if len(S) >= P: wait_and_remove_first_completed(S)                          # Wait for a process to complete if the working set is full before starting the next job
     S.append(subprocess.Popen(["sleep", f"{random.randint(D, 2* D)}"]))         # Start a process that does a random amount of sleeping as work
 
   while S: print(f"Wait {len(S):12d}"); S.pop().wait()                          # Wait for remaining processes to complete. Wait in the most convenient order as the actual order makes no difference
