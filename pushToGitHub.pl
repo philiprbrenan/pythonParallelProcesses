@@ -16,11 +16,7 @@ my $home = fpd q(/home/phil/z/python/), $repo;                                  
 my $user = q(philiprbrenan);                                                    # User
 my $wf   = q(.github/workflows/main.yml);                                       # Work flow on Ubuntu
 
-say STDERR "AAAA =$home=";
-
 push my @files, searchDirectoryTreesForMatchingFiles($home, qw(.pl .py .md));   # Files to upload
-
-say STDERR "BBBB ", dump(@files);
 
 for my $s(@files)                                                               # Upload each selected file
  {my $c = readBinaryFile $s;                                                    # Load file
