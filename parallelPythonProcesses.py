@@ -21,18 +21,18 @@ if __name__ == "__main__":
   P         = 10                                                                # Number to run in parallel
   D         =  2                                                                # Dispersion of wait times
 
+  print("Action Done Count")
+
   i = 0                                                                         # Number of processes launched so far
-  while i < N:
-    print(f"Start {i:4d} {len(processes):4d}")
-    if len(processes) < P:                                                      # Room to start another process
-      i += 1                                                                    # Process number
-      s = D + random.randint(0, D)                                              # Time to sleep in process
-      processes.append(subprocess.Popen(["sleep", f"{s}"]))
-    else:                                                                       # Wait for a process to finish before starting another one
+  for i in range(N):
+    print(f"Start {i+1:5d} {len(processes):5d}")
+    if len(processes) >= P:                                                     # Room to start another process
       wait_and_remove_first_completed(processes)
+    s = D + random.randint(0, D)                                                # Time to sleep in process
+    processes.append(subprocess.Popen(["sleep", f"{s}"]))
 
   while processes:                                                              # Wait for remaining processes to complete
-    print(f"Wait {len(processes):5d}")
-    wait_and_remove_first_completed(processes)
+    print(f"Wait {len(processes):12d}")
+    processes.pop().wait()
 
   print("Finished")
