@@ -18,7 +18,7 @@ if __name__ == "__main__":                                                      
   P = 10                                                                        # Number to run in parallel
   D =  2                                                                        # Dispersion of wait times
 
-  print(f"Run {N} jobs through {P} processes v1")
+  print(f"Run {N} jobs through {P} processes v1")                               # The title of the piece
   print("Action  Run  Load")
 
   for i in range(N):                                                            # Start each process
