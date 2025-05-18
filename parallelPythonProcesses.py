@@ -4,8 +4,8 @@ def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           
   start_time = time.time()                                                      # Start time
 
   while True:                                                                   # Wait uptil timeout for the next process to finish
-    for i, proc in enumerate(processes):                                        # Processes executing in parallel
-      if proc.poll() is not None:                                               # Test process for completion
+    for i, p in enumerate(processes):                                           # Processes executing in parallel
+      if p.poll() is not None:                                                  # Test process for completion
         processes.pop(i)                                                        # Remove completed process
         return                                                                  # Successfully waited for the next prcess to complete
 
@@ -14,25 +14,22 @@ def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           
 
     time.sleep(wait)                                                            # Wait a bit before trying again
 
-
-if __name__ == "__main__":
+if __name__ == "__main__":                                                      # Tests
   processes = []                                                                # Processes being run
   N         = 40                                                                # Total number of processes to run
   P         = 10                                                                # Number to run in parallel
   D         =  2                                                                # Dispersion of wait times
 
-  print("Action Done Count")
+  print("Action  Run  Load")
 
   i = 0                                                                         # Number of processes launched so far
-  for i in range(N):
-    print(f"Start {i+1:5d} {len(processes):5d}")
-    if len(processes) >= P:                                                     # Room to start another process
-      wait_and_remove_first_completed(processes)
-    s = D + random.randint(0, D)                                                # Time to sleep in process
-    processes.append(subprocess.Popen(["sleep", f"{s}"]))
+  for i in range(N):                                                            # Start each process
+    print(f"Start {i+1:5d} {len(processes):5d}")                                # Process starte and number of processes running
+    wait_and_remove_first_completed(processes) if len(processes) >= P else None # Wait for a process to complete if the working set is full
+    processes.append(subprocess.Popen(["sleep", f"{random.randint(D, 2* D)}"])) # Start a prcess that does a random amount if sleeping as work
 
   while processes:                                                              # Wait for remaining processes to complete
     print(f"Wait {len(processes):12d}")
-    processes.pop().wait()
+    processes.pop().wait()                                                      # Wait in the most convenient order as the order makes no difference
 
   print("Finished")
