@@ -16,7 +16,7 @@ def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           
 
 if __name__ == "__main__":                                                      # Tests
   S = []                                                                        # Processes currently being run
-  N = 40                                                                        # Total number of S to run
+  N = 40                                                                        # Total number of processes to run
   P = 10                                                                        # Number to run in parallel
   D =  2                                                                        # Dispersion of wait times
 
