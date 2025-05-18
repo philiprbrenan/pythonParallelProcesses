@@ -1,5 +1,5 @@
 <div>
-   <p><a href="https://github.com/philiprbrenan/parallelPythonProcesses"><img src="https://github.com/philiprbrenan/parallelPythonProcesses/workflows/Test/badge.svg"></a>
+   <p><a href="https://github.com/philiprbrenan/pythonParallelProcesses"><img src="https://github.com/philiprbrenan/pythonParallelProcesses/workflows/Test/badge.svg"></a>
 </div>
 
 # Python Parallel Processes
