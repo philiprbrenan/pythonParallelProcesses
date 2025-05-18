@@ -6,8 +6,7 @@ def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           
       if p.poll() is not None: processes.pop(i); return                         # First process to complete
     time.sleep(wait)                                                            # Wait a bit before trying again if no process has completed yet
 
-  print(f"No subprocess finished within the timeout period: {timeout}s.")       # No processes completed in the time out period so something has probably gone wrong
-  exit(1)                                                                       # Show that an error occured
+  print(f"No subprocess finished within the timeout: {timeout}s."); exit(1)     # No processes completed in the time out period so something has probably gone wrong
 
 if __name__ == "__main__":                                                      # Tests
   S = []                                                                        # Processes currently being run
