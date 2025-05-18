@@ -1,4 +1,4 @@
-#!/usr/bin/perl -I/home/phil/perl/cpan/DataTableText/lib/
+#!/usr/bin/perl -I/home/phil/perl/cpan/DataTableText/lib/ -I/home/phil/perl/cpan/GitHubCrud/lib/
 #-------------------------------------------------------------------------------
 # Push Process Python in Parallel
 # Philip R Brenan at gmail dot com, Appa Apps Ltd Inc., 2025
@@ -18,15 +18,7 @@ my $wf   = q(.github/workflows/main.yml);                                       
 
 push my @files, searchDirectoryTreesForMatchingFiles($home, qw(.pl .py .md));   # Files to upload
 
-for my $s(@files)                                                               # Upload each selected file
- {my $c = readBinaryFile $s;                                                    # Load file
-
-  $c = expandWellKnownWordsAsUrlsInMdFormat $c if $s =~ m(README);              # Expand README
-
-  my $t = swapFilePrefix $s, $home;                                             # File on github
-  my $w = writeFileUsingSavedToken($user, $repo, $t, $c);                       # Write file into github
-  lll "$w  $t";
- }
+pushToGitHub($user, $repo, $home, @files);                                      # Upload each selected file if it has changed
 
 if (1)                                                                          # Write workflow
  {my $d = dateTimeStamp;
