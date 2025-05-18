@@ -22,7 +22,6 @@ if __name__ == "__main__":                                                      
 
   print("Action  Run  Load")
 
-  i = 0                                                                         # Number of processes launched so far
   for i in range(N):                                                            # Start each process
     print(f"Start {i+1:5d} {len(processes):5d}")                                # Process starte and number of processes running
     wait_and_remove_first_completed(processes) if len(processes) >= P else None # Wait for a process to complete if the working set is full
