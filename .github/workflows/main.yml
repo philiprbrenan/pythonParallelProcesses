@@ -1,4 +1,4 @@
-# Test 2025-05-18 at 19:59:03
+# Test 2025-05-18 at 20:01:13
 
 name: Test
 run-name: pythonParallelProcesses
@@ -21,4 +21,4 @@ jobs:
 
     - name: Run in parallel
       run: |
-        python3 parallelPythonProcesses.py
+        python3 pythonParallelProcesses.py
