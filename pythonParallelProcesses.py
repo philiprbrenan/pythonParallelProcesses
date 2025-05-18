@@ -4,7 +4,7 @@ def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           
   for _, p in [[t, p] for t in range(int(timeout / wait)) for p in processes]:  # Cartesian product of waits and processes
     if p.poll() is not None: processes.remove(p); return                        # Remove first process to complete
     if (p == processes[-1]): time.sleep(wait)                                   # Wait after each set of processes to give another process a chance to finish
-  raise RuntimeError(f"No subprocess finished within the timeout: {timeout}s.");# No processes completed in the time out period so something has probably gone wrong
+  raise RuntimeError(f"No process finished within the timeout: {timeout}s.")    # No processes completed in the time out period so something has probably gone wrong
 
 if __name__ == "__main__":                                                      # Tests
   S = []                                                                        # Processes currently being run
