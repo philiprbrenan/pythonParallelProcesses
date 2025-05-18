@@ -4,5 +4,5 @@
 
 # Python Parallel Processes
 
-Run a large number of jobs in parallel with a fixed maximum number of
+Run a large number of jobs in parallel through a fixed maximum number of
 concurrent [processes](https://en.wikipedia.org/wiki/Process_management_(computing)). 
