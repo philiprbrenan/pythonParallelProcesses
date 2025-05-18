@@ -15,20 +15,20 @@ def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           
     time.sleep(wait)                                                            # Wait a bit before trying again
 
 if __name__ == "__main__":                                                      # Tests
-  processes = []                                                                # Processes being run
-  N         = 40                                                                # Total number of processes to run
-  P         = 10                                                                # Number to run in parallel
-  D         =  2                                                                # Dispersion of wait times
+  S = []                                                                        # S currently being run
+  N = 40                                                                        # Total number of S to run
+  P = 10                                                                        # Number to run in parallel
+  D =  2                                                                        # Dispersion of wait times
 
   print("Action  Run  Load")
 
   for i in range(N):                                                            # Start each process
-    print(f"Start {i+1:5d} {len(processes):5d}")                                # Process starte and number of processes running
-    wait_and_remove_first_completed(processes) if len(processes) >= P else None # Wait for a process to complete if the working set is full
-    processes.append(subprocess.Popen(["sleep", f"{random.randint(D, 2* D)}"])) # Start a prcess that does a random amount if sleeping as work
+    print(f"Start {i+1:5d} {len(S):5d}")                                        # Processes started and number of processes running
+    wait_and_remove_first_completed(S) if len(S) >= P else None                 # Wait for a process to complete if the working set is full
+    S.append(subprocess.Popen(["sleep", f"{random.randint(D, 2* D)}"]))         # Start a prcess that does a random amount if sleeping as work
 
-  while processes:                                                              # Wait for remaining processes to complete
-    print(f"Wait {len(processes):12d}")
-    processes.pop().wait()                                                      # Wait in the most convenient order as the order makes no difference
+  while S:                                                                      # Wait for remaining processes to complete
+    print(f"Wait {len(S):12d}")
+    S.pop().wait()                                                              # Wait in the most convenient order as the order makes no difference
 
   print("Finished")
