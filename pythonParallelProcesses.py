@@ -1,7 +1,7 @@
 import random, subprocess, time
 
 def wait_and_remove_first_completed(processes, wait=1, timeout=7200):           # Waits for the first subprocess in the list to complete and removes it from the list.
-  for _, p in [[x, y] for x in range(int(timeout / wait)) for y in processes]:  # Cartesian product of waits and processes
+  for _, p in [[t, p] for t in range(int(timeout / wait)) for p in processes]:  # Cartesian product of waits and processes
     if p.poll() is not None: processes.remove(p); return                        # First process to complete
     if (p == processes[-1]): time.sleep(wait)                                   # Wait after each set of processes
   print(f"No subprocess finished within the timeout: {timeout}s."); exit(1)     # No processes completed in the time out period so something has probably gone wrong
