@@ -4,5 +4,5 @@
 
 # Python Parallel Processes
 
-Run a large number of jobs through a fixed set of [Python](https://www.python.org/) [processes](https://en.wikipedia.org/wiki/Process_management_(computing)) maintaining
-the fixed set fully loaded at all times.
+Run a large number of jobs in parallel with a fixed maximum number of
+concurrent [processes](https://en.wikipedia.org/wiki/Process_management_(computing)). 
