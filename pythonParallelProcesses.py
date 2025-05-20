@@ -21,4 +21,4 @@ if __name__ == "__main__":                                                      
 
   while S: print(f"Wait {len(S):12d}"); S.pop().wait()                          # Wait for remaining processes to complete. Wait in the most convenient order as the actual order makes no difference
 
-  print("Finished")
+  print("Finished");
