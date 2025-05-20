@@ -1,4 +1,4 @@
-#!/usr/bin/perl -I/home/phil/perl/cpan/DataTableText/lib/ -I/home/phil/perl/cpan/GitHubCrud/lib/
+#!/usr/bin/perl
 #-------------------------------------------------------------------------------
 # Push Process Python in Parallel
 # Philip R Brenan at gmail dot com, Appa Apps Ltd Inc., 2025
